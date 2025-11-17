@@ -272,18 +272,22 @@ export default function SubeTuFactura() {
 
       <style jsx>{`
         .form-container {
-          max-width: 700px;
+          max-width: 750px;
           margin: 0 auto;
+          animation: fadeInUp 0.6s ease-out;
         }
         .page-title {
-          font-size: 2.5rem;
-          font-weight: 700;
+          font-size: 3rem;
+          font-weight: 800;
           margin-bottom: 1rem;
           text-align: center;
-          color: var(--text-dark);
+          background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
         }
         .page-subtitle {
-          font-size: 1.1rem;
+          font-size: 1.2rem;
           color: var(--text-light);
           text-align: center;
           margin-bottom: 3rem;
@@ -291,135 +295,180 @@ export default function SubeTuFactura() {
         }
         .factura-form {
           background: var(--white);
-          padding: 2.5rem;
-          border-radius: 12px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          padding: 3rem;
+          border-radius: 24px;
+          box-shadow: var(--shadow-md);
+          border: 1px solid var(--primary-lighter);
+          transition: all 0.3s ease;
+        }
+        .factura-form:hover {
+          box-shadow: var(--shadow-lg);
         }
         .form-row {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 1.5rem;
+          gap: 2rem;
         }
         .form-group {
-          margin-bottom: 1.5rem;
+          margin-bottom: 2rem;
         }
         .form-group label {
           display: block;
-          margin-bottom: 0.5rem;
-          font-weight: 600;
+          margin-bottom: 0.75rem;
+          font-weight: 700;
           color: var(--text-dark);
+          font-size: 1rem;
         }
         .form-group input,
         .form-group select {
           width: 100%;
-          padding: 12px;
+          padding: 16px 18px;
           border: 2px solid var(--border-color);
-          border-radius: 8px;
+          border-radius: 12px;
           font-size: 16px;
-          transition: border-color 0.3s;
+          transition: all 0.3s ease;
+          background: var(--white);
+          font-family: inherit;
+        }
+        .form-group input:hover,
+        .form-group select:hover {
+          border-color: var(--primary-light);
         }
         .form-group input:focus,
         .form-group select:focus {
           outline: none;
           border-color: var(--primary-color);
+          box-shadow: 0 0 0 4px var(--primary-lighter);
+          transform: translateY(-2px);
         }
         .file-upload {
           margin-top: 0.5rem;
         }
         .file-upload input[type="file"] {
-          padding: 8px;
-          border: 2px dashed var(--border-color);
-          border-radius: 8px;
+          padding: 20px;
+          border: 3px dashed var(--border-color);
+          border-radius: 12px;
           width: 100%;
           cursor: pointer;
+          transition: all 0.3s ease;
+          background: var(--primary-lighter);
+        }
+        .file-upload input[type="file"]:hover {
+          border-color: var(--primary-color);
+          background: var(--white);
         }
         .file-info {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin-top: 0.5rem;
-          padding: 0.75rem;
-          background: var(--bg-light);
-          border-radius: 8px;
+          margin-top: 1rem;
+          padding: 1rem 1.25rem;
+          background: linear-gradient(135deg, var(--primary-lighter) 0%, var(--white) 100%);
+          border-radius: 12px;
+          border: 2px solid var(--primary-color);
+          animation: fadeIn 0.3s ease;
+        }
+        .file-info span {
+          color: var(--primary-color);
+          font-weight: 600;
         }
         .remove-file {
-          background: var(--secondary-color);
+          background: linear-gradient(135deg, var(--secondary-color) 0%, #e55a2b 100%);
           color: var(--white);
           border: none;
-          padding: 6px 12px;
-          border-radius: 6px;
+          padding: 8px 16px;
+          border-radius: 8px;
           cursor: pointer;
           font-size: 0.9rem;
+          font-weight: 600;
+          transition: all 0.3s ease;
+        }
+        .remove-file:hover {
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-sm);
         }
         .form-group small {
           display: block;
-          margin-top: 0.5rem;
+          margin-top: 0.75rem;
           color: var(--text-light);
           font-size: 0.9rem;
         }
         .checkbox-group {
-          background: var(--bg-light);
-          padding: 1.5rem;
-          border-radius: 8px;
+          background: linear-gradient(135deg, var(--primary-lighter) 0%, var(--white) 100%);
+          padding: 2rem;
+          border-radius: 16px;
+          border: 2px solid var(--primary-lighter);
         }
         .checkbox-label {
           display: flex;
           align-items: flex-start;
-          gap: 0.75rem;
+          gap: 1rem;
           cursor: pointer;
         }
         .checkbox-label input[type="checkbox"] {
-          width: auto;
-          margin-top: 4px;
+          width: 22px;
+          height: 22px;
+          margin-top: 2px;
           cursor: pointer;
+          accent-color: var(--primary-color);
         }
         .privacy-link {
-          display: block;
-          margin-top: 0.5rem;
+          display: inline-block;
+          margin-top: 0.75rem;
           color: var(--primary-color);
           text-decoration: none;
-          font-size: 0.9rem;
+          font-size: 0.95rem;
+          font-weight: 600;
+          transition: all 0.3s ease;
         }
         .privacy-link:hover {
           text-decoration: underline;
+          transform: translateX(3px);
         }
         .btn-submit {
           width: 100%;
-          margin-top: 1rem;
-          padding: 16px;
-          font-size: 1.1rem;
+          margin-top: 1.5rem;
+          padding: 18px;
+          font-size: 1.15rem;
+          font-weight: 700;
+          border-radius: 14px;
         }
         .btn-submit:disabled {
           opacity: 0.6;
           cursor: not-allowed;
+          transform: none !important;
         }
         .alert {
-          padding: 1.5rem;
-          border-radius: 8px;
+          padding: 2rem;
+          border-radius: 16px;
           margin-bottom: 2rem;
+          animation: fadeInUp 0.4s ease-out;
+          border-left: 5px solid;
         }
         .alert-success {
-          background: #d4edda;
-          border: 1px solid #c3e6cb;
+          background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+          border-left-color: #28a745;
           color: #155724;
         }
         .alert-error {
-          background: #f8d7da;
-          border: 1px solid #f5c6cb;
+          background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+          border-left-color: #dc3545;
           color: #721c24;
         }
         .alert h3 {
           margin-bottom: 0.5rem;
+          font-weight: 700;
         }
         @media (max-width: 768px) {
           .form-row {
             grid-template-columns: 1fr;
+            gap: 0;
           }
           .page-title {
-            font-size: 2rem;
+            font-size: 2.2rem;
           }
           .factura-form {
-            padding: 1.5rem;
+            padding: 2rem 1.5rem;
           }
         }
       `}</style>

@@ -31,44 +31,79 @@ export default function Footer() {
       </div>
       <style jsx>{`
         .footer {
-          background-color: var(--text-dark);
+          background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
           color: var(--white);
-          padding: 60px 0 20px;
-          margin-top: 80px;
+          padding: 80px 0 30px;
+          margin-top: 100px;
+          position: relative;
+        }
+        .footer::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-dark) 100%);
         }
         .footer-content {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 2rem;
-          margin-bottom: 2rem;
+          gap: 3rem;
+          margin-bottom: 3rem;
         }
         .footer-section h3 {
           color: var(--primary-color);
-          margin-bottom: 1rem;
+          margin-bottom: 1.5rem;
+          font-size: 1.5rem;
+          font-weight: 700;
         }
         .footer-section h4 {
-          margin-bottom: 1rem;
+          margin-bottom: 1.5rem;
+          font-size: 1.2rem;
+          font-weight: 600;
+        }
+        .footer-section p {
+          line-height: 1.8;
+          opacity: 0.9;
         }
         .footer-section ul {
           list-style: none;
         }
         .footer-section ul li {
-          margin-bottom: 0.5rem;
+          margin-bottom: 0.75rem;
         }
         .footer-section a {
           color: var(--white);
           text-decoration: none;
           opacity: 0.8;
-          transition: opacity 0.3s;
+          transition: all 0.3s ease;
+          display: inline-block;
+          position: relative;
+        }
+        .footer-section a::before {
+          content: '→';
+          position: absolute;
+          left: -20px;
+          opacity: 0;
+          transition: all 0.3s ease;
+          color: var(--primary-color);
         }
         .footer-section a:hover {
           opacity: 1;
+          color: var(--primary-color);
+          transform: translateX(5px);
+        }
+        .footer-section a:hover::before {
+          opacity: 1;
+          left: -15px;
         }
         .footer-bottom {
           text-align: center;
-          padding-top: 2rem;
+          padding-top: 2.5rem;
           border-top: 1px solid rgba(255, 255, 255, 0.1);
           opacity: 0.7;
+          font-size: 0.95rem;
         }
       `}</style>
     </footer>
