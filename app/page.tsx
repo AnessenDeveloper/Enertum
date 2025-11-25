@@ -1,13 +1,32 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import ScrollReveal from '@/components/ScrollReveal'
 import Link from 'next/link'
 
 export default function Home() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY })
+    }
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
+
   return (
     <>
       <Header />
+      <div 
+        className="cursor-glow"
+        style={{
+          left: `${mousePosition.x}px`,
+          top: `${mousePosition.y}px`,
+        }}
+      />
       <main>
         {/* Hero Section */}
         <section className="hero">
@@ -40,26 +59,34 @@ export default function Home() {
         {/* Qué hacemos */}
         <section className="section">
           <div className="container">
-            <h2 className="section-title">Qué hacemos</h2>
-            <p className="section-subtitle">
-              El proceso es muy simple. En 3 pasos te ayudamos a ahorrar.
-            </p>
+            <ScrollReveal direction="up">
+              <h2 className="section-title">Qué hacemos</h2>
+              <p className="section-subtitle">
+                El proceso es muy simple. En 3 pasos te ayudamos a ahorrar.
+              </p>
+            </ScrollReveal>
             <div className="steps">
-              <div className="step">
-                <div className="step-number">1</div>
-                <h3>Nos envías tu factura</h3>
-                <p>Sube una foto o PDF de tu última factura de la luz. Es gratis y sin compromiso.</p>
-              </div>
-              <div className="step">
-                <div className="step-number">2</div>
-                <h3>La comparamos con varias comercializadoras</h3>
-                <p>Analizamos tu consumo y comparamos con las mejores ofertas del mercado.</p>
-              </div>
-              <div className="step">
-                <div className="step-number">3</div>
-                <h3>Si ahorras, hacemos el cambio por ti</h3>
-                <p>Si encontramos ahorro, gestionamos todo el cambio. Tú solo firmas si te compensa.</p>
-              </div>
+              <ScrollReveal direction="up" delay={0}>
+                <div className="step">
+                  <div className="step-number">1</div>
+                  <h3>Nos envías tu factura</h3>
+                  <p>Sube una foto o PDF de tu última factura de la luz. Es gratis y sin compromiso.</p>
+                </div>
+              </ScrollReveal>
+              <ScrollReveal direction="up" delay={100}>
+                <div className="step">
+                  <div className="step-number">2</div>
+                  <h3>La comparamos con varias comercializadoras</h3>
+                  <p>Analizamos tu consumo y comparamos con las mejores ofertas del mercado.</p>
+                </div>
+              </ScrollReveal>
+              <ScrollReveal direction="up" delay={200}>
+                <div className="step">
+                  <div className="step-number">3</div>
+                  <h3>Si ahorras, hacemos el cambio por ti</h3>
+                  <p>Si encontramos ahorro, gestionamos todo el cambio. Tú solo firmas si te compensa.</p>
+                </div>
+              </ScrollReveal>
             </div>
           </div>
         </section>
@@ -67,28 +94,38 @@ export default function Home() {
         {/* Por qué Enertum */}
         <section className="section bg-light">
           <div className="container">
-            <h2 className="section-title">Por qué Enertum</h2>
+            <ScrollReveal direction="up">
+              <h2 className="section-title">Por qué Enertum</h2>
+            </ScrollReveal>
             <div className="features">
-              <div className="feature">
-                <div className="feature-icon">🔍</div>
-                <h3>Transparencia total</h3>
-                <p>No somos comercializadora, somos asesores independientes. Nuestro objetivo es que ahorres, no vendértete algo.</p>
-              </div>
-              <div className="feature">
-                <div className="feature-icon">🤝</div>
-                <h3>Trabajamos con varias compañías</h3>
-                <p>No estamos atados a una sola comercializadora. Buscamos la mejor opción para ti entre todas las disponibles.</p>
-              </div>
-              <div className="feature">
-                <div className="feature-icon">🔓</div>
-                <h3>Sin permanencia</h3>
-                <p>Si aplica, te ofrecemos tarifas sin permanencia. Libertad total para cambiar cuando quieras.</p>
-              </div>
-              <div className="feature">
-                <div className="feature-icon">✍️</div>
-                <h3>Tú solo firmas si te compensa</h3>
-                <p>No hay compromiso. Solo procedemos si realmente vas a ahorrar dinero mes a mes.</p>
-              </div>
+              <ScrollReveal direction="up" delay={0}>
+                <div className="feature">
+                  <div className="feature-icon">🔍</div>
+                  <h3>Transparencia total</h3>
+                  <p>No somos comercializadora, somos asesores independientes. Nuestro objetivo es que ahorres, no vendértete algo.</p>
+                </div>
+              </ScrollReveal>
+              <ScrollReveal direction="up" delay={100}>
+                <div className="feature">
+                  <div className="feature-icon">🤝</div>
+                  <h3>Trabajamos con varias compañías</h3>
+                  <p>No estamos atados a una sola comercializadora. Buscamos la mejor opción para ti entre todas las disponibles.</p>
+                </div>
+              </ScrollReveal>
+              <ScrollReveal direction="up" delay={200}>
+                <div className="feature">
+                  <div className="feature-icon">🔓</div>
+                  <h3>Sin permanencia</h3>
+                  <p>Si aplica, te ofrecemos tarifas sin permanencia. Libertad total para cambiar cuando quieras.</p>
+                </div>
+              </ScrollReveal>
+              <ScrollReveal direction="up" delay={300}>
+                <div className="feature">
+                  <div className="feature-icon">✍️</div>
+                  <h3>Tú solo firmas si te compensa</h3>
+                  <p>No hay compromiso. Solo procedemos si realmente vas a ahorrar dinero mes a mes.</p>
+                </div>
+              </ScrollReveal>
             </div>
           </div>
         </section>
@@ -96,29 +133,37 @@ export default function Home() {
         {/* Resultados */}
         <section className="section">
           <div className="container">
-            <h2 className="section-title">Resultados reales</h2>
-            <p className="section-subtitle">
-              Estos son algunos de los ahorros que hemos conseguido para nuestros clientes.
-            </p>
+            <ScrollReveal direction="up">
+              <h2 className="section-title">Resultados reales</h2>
+              <p className="section-subtitle">
+                Estos son algunos de los ahorros que hemos conseguido para nuestros clientes.
+              </p>
+            </ScrollReveal>
             <div className="results">
-              <div className="result-card">
-                <div className="result-icon">👨‍👩‍👧‍👦</div>
-                <h3>Familia Pérez</h3>
-                <p className="result-savings">Ahorran <strong>32€/mes</strong></p>
-                <p className="result-detail">Particular - Vivienda en Madrid</p>
-              </div>
-              <div className="result-card">
-                <div className="result-icon">🍺</div>
-                <h3>Bar La Esquina</h3>
-                <p className="result-savings">Ahorran <strong>148€/mes</strong></p>
-                <p className="result-detail">Empresa - Local comercial en Barcelona</p>
-              </div>
-              <div className="result-card">
-                <div className="result-icon">🏢</div>
-                <h3>Oficinas García</h3>
-                <p className="result-savings">Ahorran <strong>89€/mes</strong></p>
-                <p className="result-detail">Empresa - Oficinas en Valencia</p>
-              </div>
+              <ScrollReveal direction="up" delay={0}>
+                <div className="result-card">
+                  <div className="result-icon">👨‍👩‍👧‍👦</div>
+                  <h3>Familia Pérez</h3>
+                  <p className="result-savings">Ahorran <strong>32€/mes</strong></p>
+                  <p className="result-detail">Particular - Vivienda en Madrid</p>
+                </div>
+              </ScrollReveal>
+              <ScrollReveal direction="up" delay={150}>
+                <div className="result-card">
+                  <div className="result-icon">🍺</div>
+                  <h3>Bar La Esquina</h3>
+                  <p className="result-savings">Ahorran <strong>148€/mes</strong></p>
+                  <p className="result-detail">Empresa - Local comercial en Barcelona</p>
+                </div>
+              </ScrollReveal>
+              <ScrollReveal direction="up" delay={300}>
+                <div className="result-card">
+                  <div className="result-icon">🏢</div>
+                  <h3>Oficinas García</h3>
+                  <p className="result-savings">Ahorran <strong>89€/mes</strong></p>
+                  <p className="result-detail">Empresa - Oficinas en Valencia</p>
+                </div>
+              </ScrollReveal>
             </div>
           </div>
         </section>
@@ -126,7 +171,9 @@ export default function Home() {
         {/* FAQ */}
         <section className="section bg-light">
           <div className="container">
-            <h2 className="section-title">Preguntas frecuentes</h2>
+            <ScrollReveal direction="up">
+              <h2 className="section-title">Preguntas frecuentes</h2>
+            </ScrollReveal>
             <div className="faq">
               <div className="faq-item">
                 <h3>¿Tiene coste?</h3>
@@ -451,13 +498,24 @@ export default function Home() {
         .cta-section .section-subtitle {
           color: var(--white);
         }
-        .section-title {
-          animation: fadeInUp 0.6s ease-out;
+        .cursor-glow {
+          position: fixed;
+          width: 300px;
+          height: 300px;
+          background: radial-gradient(circle, rgba(0, 168, 89, 0.1) 0%, transparent 70%);
+          pointer-events: none;
+          transform: translate(-50%, -50%);
+          z-index: 9999;
+          transition: opacity 0.3s ease;
+          opacity: 0;
         }
-        .section-subtitle {
-          animation: fadeInUp 0.6s ease-out 0.2s both;
+        .cursor-glow:hover {
+          opacity: 1;
         }
         @media (max-width: 768px) {
+          .cursor-glow {
+            display: none;
+          }
           .hero {
             padding: 100px 0;
           }
